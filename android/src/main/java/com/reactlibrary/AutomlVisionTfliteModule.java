@@ -162,9 +162,9 @@ public class AutomlVisionTfliteModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void loadModel(final String modelPath, final String labelsPath,
                             final Callback callback) {
+        AssetManager assetManager = reactContext.getAssets();
         LoadedModel model = null;
         try (
-            AssetManager assetManager = reactContext.getAssets();
             AssetFileDescriptor fileDescriptor = assetManager.openFd(modelPath);
             FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
             FileChannel fileChannel = inputStream.getChannel();
